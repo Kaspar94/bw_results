@@ -34,7 +34,7 @@ const fetchDataAndSend = (recipients = []) => {
 
 // initialize on startup
 fetchDataAndSend();
-setInterval(() => fetchDataAndSend(sockets), 60000); // also send data every minute in case worker service is down.
+setInterval(() => fetchDataAndSend(sockets), 5000); // also send data every 5 seconds in case worker service is down.
 
 wss.on("connection", socket => {
   sockets.push(socket);
