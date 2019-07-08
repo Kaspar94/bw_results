@@ -16,9 +16,9 @@ const wss = new webSocket.Server({ server });
 let currentData = JSON.stringify([]); // latest result from database
 let sockets = []; // all our active connections
 
-const fetchDataAndSend = async (recipients = []) => {
+const fetchDataAndSend = (recipients = []) => {
   // query database
-  await sql.query(
+  sql.query(
     "SELECT name, count(*) as count FROM votes group by name",
     (err, resp) => {
       if (err) {
