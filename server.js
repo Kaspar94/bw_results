@@ -5,7 +5,6 @@ const sql = require("./db");
 const webSocket = require("ws");
 const http = require("http");
 
-
 const PORT = process.env.PORT | 7000;
 
 const app = express();
@@ -44,7 +43,7 @@ wss.on("connection", socket => {
 
   socket.on("message", data => {
     if (data !== "vote") return;
-    setTimeout(() => fetchDataAndSend(sockets), 200);
+    setTimeout(() => fetchDataAndSend(sockets), 1000);
   });
 
   socket.on("close", (code, reason) => {
