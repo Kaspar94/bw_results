@@ -5,8 +5,6 @@ const sql = require("./db");
 const webSocket = require("ws");
 const http = require("http");
 
-console.log(process.env.DB_USER);
-console.log("dbuser");
 
 const PORT = process.env.PORT | 7000;
 
@@ -16,7 +14,7 @@ const server = http.createServer(app);
 
 const wss = new webSocket.Server({ server });
 
-let currentData = []; // latest result from database
+let currentData = JSON.stringify([]); // latest result from database
 let sockets = []; // all our active connections
 
 const fetchDataAndSend = async (recipients = []) => {
